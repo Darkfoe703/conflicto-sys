@@ -1,0 +1,36 @@
+<!doctype html>
+{% load static %}
+<html lang="es" data-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Sistema Pacientes</title>
+        <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+        <link rel="stylesheet" href="{% static 'css/pico.css' %}">
+        <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+
+    </head>
+    <body>
+        <main class="container">
+            <header>
+                <nav>
+                    <ul>
+                        <li><strong>Brand</strong></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#" role="button">Button</a></li>
+                    </ul>
+                </nav>
+            </header>
+      
+        
+            {% block content %}
+
+            {% endblock content %}
+        </main>
+        
+    </body>
+</html>

@@ -3,13 +3,13 @@
 
 {% block content %}
     {% for patient in patients %}
-        <div>
+        <div class="grid col-1 med-col-1 sm-col-1">
             
-            <div>
+            <div class="card-blog">
                 {% comment %} <a class="post-link" href="{% url 'blog:post-detail' slug=post.slug %}"> {% endcomment %}
-                <div>
-                    {% comment %} <img src="media/{{ post.thumbnail }}" alt="thumbnail" style="width:100%"> {% endcomment %}
-                    <div>
+                <div class="grid col-2 med-col-2 sm-col-1 card-content">
+                    <img src="media/{{ post.thumbnail }}" alt="thumbnail" style="width:100%">
+                    <div class="card-blog-content">
                     <h3><b>{{ patient.name }} </b></h3>
                     {% comment %} <p class="timestamp">{{ post.published|date:"d M Y" }}</p>
                     <p class="excerpt">{{ post.excerpt }}</p> {% endcomment %} 
