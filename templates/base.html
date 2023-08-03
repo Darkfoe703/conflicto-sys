@@ -1,10 +1,10 @@
 <!doctype html>
 {% load static %}
-<html lang="es" data-theme="light">
+<html lang="es" data-theme="dark">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Sistema Pacientes</title>
+        <title>{% block title %} {% endblock title %}</title>
         <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
         <link rel="stylesheet" href="{% static 'css/pico.css' %}">
         <link rel="stylesheet" href="{% static 'css/custom.css' %}">
@@ -16,12 +16,14 @@
             <header>
                 <nav>
                     <ul>
-                        <li><strong>Brand</strong></li>
+                        <li><strong>Conflicto Psíquico</strong></li>
                     </ul>
                     <ul>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#">Link</a></li>
-                        <li><a href="#" role="button">Button</a></li>
+                        <li><a href="{% url 'home' %}">Inicio</a></li>
+                        <li><a href="{% url 'clinic_history:home' %}">Sistema</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Sobre Mí</a></li>
+                        <li><a href="#" role="button">Acceder</a></li>
                     </ul>
                 </nav>
             </header>

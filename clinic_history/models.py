@@ -17,8 +17,10 @@ class Patient(models.Model):
         ('particular', 'Particular'),
     )
     treatment = (
-        (True, 'Activo'),
-        (False, 'Inactivo'),
+        ('activo', 'Activo'),
+        ('interrumpido', 'interrumpido'),
+        ('abandonado', 'Abandonado'),
+        ('alta', 'Alta'),
     )
     status = (
         ('single', 'Soltero/a'),
@@ -28,31 +30,40 @@ class Patient(models.Model):
         ('separated', 'Separado/a'),
         ('in_couple', 'En pareja'),
     )
+    formation = (
+        ('incompletos', 'Incompletos'),
+        ('primaria', 'Primaria'),
+        ('secundaria', 'Secundaria'),
+        ('tecnicatura', 'Tecnicatura'),
+        ('universitaria', 'Universitaria'),
+        ('otro', 'Otro'),
+    )
     
     id = models.AutoField(primary_key=True, unique=True, editable=False, blank=False, null=False)
-    treatment_status = models.BooleanField(verbose_name='Estado del tratamiento', choices=treatment, editable=True, default=True, blank=False, null=True)
-    register_date = models.DateField(default=date.today, editable=True)
-    pac_number = models.IntegerField(primary_key=False, unique=True, editable=True, blank=False, null=False, verbose_name='Historia Clinica Nº')
+    treatment_status = models.CharField(max_length=50, choices=treatment, editable=True, default='activo', blank=False, null=True, verbose_name='Tratamiento')
+    register_date = models.DateField(default=date.today, editable=True, verbose_name='Registrado el')
+    pac_number = models.IntegerField(primary_key=False, unique=True, editable=True, blank=False, null=False, verbose_name='Nº Hist. Clínica')
     name = models.CharField(max_length=100, blank=False, null=False, verbose_name='Nombre')
     surname = models.CharField(max_length=100, blank=False, null=False, verbose_name='Apellido')
     dni = models.IntegerField(unique=True, verbose_name='DNI')
     birthdate = models.DateField(editable=True, verbose_name='Fecha de Nacimiento')
-    phone_number = models.IntegerField(blank=True)
-    address = models.CharField(max_length=100, blank=True)
-    email = models.EmailField(max_length=100, blank=True)
-    education = models.CharField(max_length=100, blank=True)
-    workplace = models.CharField(max_length=100, blank=True)
-    other_act = models.CharField(max_length=255, blank=True)
-    times = models.CharField(max_length=255, blank=True)
-    civil_status = models.CharField(max_length=100, blank=True, choices=status, default='')
-    ooss = models.CharField(max_length=32, blank=True, null=True, choices=ooss_options, default='')
-    cuil = models.IntegerField(unique=True, verbose_name='CUIL', blank=True, null=True)
-    reason = models.TextField(max_length=255, blank=False)
-    other_treatment = models.CharField(max_length=100, blank=True)
-    pharmacology = models.CharField(max_length=255, blank=True)
-    referal_for = models.CharField(max_length=50, blank=True)
-    condition_history = models.CharField(max_length=50, blank=True)
-    other_info = models.TextField(max_length=255, blank=True)
+    phone_number = models.IntegerField(blank=True, verbose_name='Telefono')
+    address = models.CharField(max_length=100, blank=True, verbose_name='Dirección')
+    email = models.EmailField(max_length=100, blank=True, verbose_name='E-mail')
+    education = models.CharField(max_length=100, blank=True, verbose_name='Estudios')
+    workplace = models.CharField(max_length=100, blank=True, verbose_name='Ocupación')
+    other_act = models.CharField(max_length=255, blank=True, verbose_name='Otras actividades')
+    times = models.CharField(max_length=255, blank=True, verbose_name='Tiempos')
+    civil_status = models.CharField(max_length=100, blank=True, choices=status, default='', verbose_name='Estado Civil')
+    ooss = models.CharField(max_length=32, blank=True, null=True, choices=ooss_options, default='', verbose_name='O.S')
+    afiliate_number = models.IntegerField(blank=True, null=True, verbose_name='Nº Afiliado')
+    cuil = models.IntegerField(unique=True, blank=True, null=True, verbose_name='CUIL')
+    reason = models.TextField(max_length=255, blank=False, verbose_name='Motivo de consulta')
+    other_treatment = models.CharField(max_length=100, blank=True, verbose_name='Otros tratamientos')
+    pharmacology = models.CharField(max_length=255, blank=True, verbose_name='Medicación')
+    referal_for = models.CharField(max_length=50, blank=True, verbose_name='Referido por')
+    condition_history = models.CharField(max_length=50, blank=True, verbose_name='Historia del padecimiento')
+    other_info = models.TextField(max_length=255, blank=True, verbose_name='Otra información')
 
     objects = models.Manager()
     patientobjects = PatientObjects()

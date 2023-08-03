@@ -2,22 +2,45 @@
 {% load static %}
 
 {% block content %}
-    {% for patient in patients %}
-        <div>
-            
-            <div>
-                {% comment %} <a class="post-link" href="{% url 'blog:post-detail' slug=post.slug %}"> {% endcomment %}
-                <div>
-                    {% comment %} <img src="media/{{ post.thumbnail }}" alt="thumbnail" style="width:100%"> {% endcomment %}
-                    <div>
-                    <h3><b>{{ patient.name }} </b></h3>
-                    {% comment %} <p class="timestamp">{{ post.published|date:"d M Y" }}</p>
-                    <p class="excerpt">{{ post.excerpt }}</p> {% endcomment %} 
-                    </div>
-                </div>
-                </a>
-            </div>
-            
-        </div>
-    {% endfor %}
+    <br>
+    <table role="grid">
+        <thead>
+            <tr>
+                <th scope="col"> {{ fields.pac_number }} </th>
+                <th scope="col"> {{ fields.name }} </th>
+                <th scope="col"> {{ fields.surname }} </th>
+                <th scope="col"> {{ fields.dni }} </th>
+                <th scope="col"> {{ fields.cuil }} </th>
+                <th scope="col"> {{ fields.phone_number }} </th>
+                <th scope="col"> {{ fields.treatment_status }} </th>
+                <th scope="col"> {{ fields.ooss }} </th>
+                <th scope="col"> {{ fields.civil_status }} </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for patient in patients %}
+            <tr>
+            <th scope="row"> {{ patient.pac_number }} </th>
+            <td> {{ patient.name }} </td>
+            <td> {{ patient.surname }} </td>
+            <td> {{ patient.dni }} </td>
+            <td> {{ patient.cuil }} </td>
+            <td> {{ patient.phone_number }} </td>
+            <td> {{ patient.treatment_status | title }} </td>
+            <td> {{ patient.ooss | upper }} </td>
+            <td> {{ patient.civil_status}} </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th scope="col">#</th>
+                <td scope="col">Total</td>
+                <td scope="col">Total</td>
+                <td scope="col">Total</td>
+                <td scope="col">Total</td>
+                <td scope="col">Total</td>
+            </tr>
+        </tfoot>
+    </table>
 {% endblock content %}
