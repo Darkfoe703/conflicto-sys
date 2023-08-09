@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<article>
+  <header>
+    <h1 class="patient-h"> {{patient.name}} {{patient.surname}} </h1>
+    <div class="grid">
+      <h5 class="patient-h">Nº de historia clínica: </h5>
+      </h6><span>{{patient.pac_number}}</span>
+      <h5>Activo</h5>
+    </div>
+    <hr>
+    <div class="grid">
+      <h6 class="patient-h">Obra Social: </h6><span>{{patient.ooss}}</span>
+      <h6 class="patient-h">Nro. de afiliado: </h6><span>{{patient.afiliate_number}}</span>
+      <h6 class="patient-h">CUIL: </h6><span>{{patient.cuil}}</span>
+    </div>
+    <div class="grid">
+      <h6 class="patient-h">DNI: </h6><span>{{patient.dni}}</span>
+      <h6 class="patient-h">Fecha de Nacimiento: </h6><span>{{patient.birthdate}}</span>
+      <h6 class="patient-h">Edad: </h6><span>{{patient.dni}}</span>
+    </div>
+    <div class="grid">
+      <h6 class="patient-h">Direccion: </h6><span>{{patient.address}}</span>
+      <h6 class="patient-h">Teléfono: </h6><span>{{patient.phone_number}}</span>
+      <h6 class="patient-h">e-mail: </h6><span>{{patient.email}}</span>
+    </div>
+    <hr>
+    <div class="grid">
+      <h6 class="patient-h">Estado civil: </h6><span>{{patient.civil_status}}</span>
+      <h6 class="patient-h">Referido por:</h6><span>{{patient.referal_for}}</span>
+    </div>
+    <div class="grid">
+      <h6 class="patient-h">Estudios: </h6><span>{{patient.education}}</span>
+      <h6 class="patient-h">Ocupación: </h6><span>{{patient.workplace}}</span>
+      <h6 class="patient-h">Otras actividades: </h6><span>{{patient.other_act}}</span>
+    </div>
+    <div class="grid">
+      <h6 class="patient-h">Horarios personales: </h6><span>{{patient.times}}</span>
+    </div>
+    <hr>
+    <div class="grid">
+      <h6 class="patient-h">Motivo de consulta: </h6><span>{{patient.reason}}</span>
+    </div>
+    <div class="grid">
+      <h6 class="patient-h">Otros tratamientos: </h6><span>{{patient.other_treatment}}</span>
+      <h6 class="patient-h">Farmacología: </h6><span>{{patient.pharmacology}}</span>
+      <h6 class="patient-h">Historial del padecimiento: </h6><span>{{patient.condition_history}}</span>
+    </div>
+    <div class="grid">
+      <h6 class="patient-h">Otras consideraciones: </h6><span>{{patient.other_info}}</span>
+    </div>
+
+  </header>
+  <h2 class="patient-h">Historial Clínico</h2>
+  <div> {{ sessions }} </div>
+  {% for session in sessions %}
+  <div>{{session.patient}}</div>
+  <div>{{session.n_session}}</div>
+  <div>{{session.date_log}}</div>
+
+  {% endfor %}
+  <footer>
+    <div>
+      <h5>Contactos </h5>
+    </div>
+  </footer>
+</article>
+
+{% endblock content %}

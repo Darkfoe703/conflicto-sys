@@ -12,23 +12,21 @@
 
     </head>
     <body>
+        <header class="main-header">
+            <nav class="navbar">
+                <ul>
+                    <li><strong>Conflicto Psíquico</strong></li>
+                </ul>
+                <ul>
+                    <li><a href="{% url 'home' %}">Inicio</a></li>
+                    <li><a href="{% url 'clinic_history:home' %}">Sistema</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Sobre Mí</a></li>
+                    <li><a href="#" role="button">Acceder</a></li>
+                </ul>
+            </nav>
+        </header>
         <main class="container">
-            <header>
-                <nav>
-                    <ul>
-                        <li><strong>Conflicto Psíquico</strong></li>
-                    </ul>
-                    <ul>
-                        <li><a href="{% url 'home' %}">Inicio</a></li>
-                        <li><a href="{% url 'clinic_history:home' %}">Sistema</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Sobre Mí</a></li>
-                        <li><a href="#" role="button">Acceder</a></li>
-                    </ul>
-                </nav>
-            </header>
-      
-        
             {% block content %}
 
             {% endblock content %}

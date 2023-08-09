@@ -19,17 +19,22 @@
         </thead>
         <tbody>
             {% for patient in patients %}
+            
             <tr>
-            <th scope="row"> {{ patient.pac_number }} </th>
-            <td> {{ patient.name }} </td>
-            <td> {{ patient.surname }} </td>
-            <td> {{ patient.dni }} </td>
-            <td> {{ patient.cuil }} </td>
-            <td> {{ patient.phone_number }} </td>
-            <td> {{ patient.treatment_status | title }} </td>
-            <td> {{ patient.ooss | upper }} </td>
-            <td> {{ patient.civil_status}} </td>
+                
+                <th scope="row"><a class= "table-link" href="{% url 'clinic_history:patient-detail' pk=patient.id %}"> {{ patient.pac_number }} </th>
+                <td>  {{ patient.name }} </td>
+                <td> {{ patient.surname }} </td>
+                <td> {{ patient.dni }} </td>
+                <td> {{ patient.cuil }} </td>
+                <td> {{ patient.phone_number }} </td>
+                <td> {{ patient.treatment_status | title }} </td>
+                <td> {{ patient.ooss | upper }} </td>
+                <td> {{ patient.civil_status}} </td>
+                <td><a role="button" class= "row-btn" href="{% url 'clinic_history:patient-detail' pk=patient.id %}"> Ver </a></td>
+                
             </tr>
+            
             {% endfor %}
         </tbody>
         <tfoot>
