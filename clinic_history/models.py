@@ -25,7 +25,6 @@ class SocialSecurity(models.Model):
 
     def __str__(self):
         return self.name
-    
 
 class Patient(models.Model):
     class PatientObjects(models.Manager):
@@ -121,11 +120,14 @@ class PatientContact(models.Model):
     address = models.CharField(max_length=20, blank=True, verbose_name='Dirección')
     other_info = models.TextField(max_length=255, blank=True, verbose_name='Info')
 
+    objects = models.Manager()
+    contactobjects = ContactObjects()
+
     class Meta:
         ordering = ('-name',)
 
-    def __str__(self):
-        return self.name
+    """ def __str__(self):
+        return self.name """
 
 class PatientLogs(models.Model):
     class LogsObjects(models.Manager):
@@ -138,7 +140,7 @@ class PatientLogs(models.Model):
     id_session = models.AutoField(primary_key=True,editable=False, blank=False, null=False, unique=True, verbose_name='Sesión')
     n_session = models.PositiveIntegerField(editable=True, blank=False, null=False, auto_created=True)
     #ooss_code = 
-    session_log = models.TextField(max_length=1024, editable=True, blank=False, null=False, verbose_name='Registro')
+    session_log = models.TextField(max_length=5000, editable=True, blank=False, null=False, verbose_name='Registro')
 
     objects = models.Manager()
     patientobjects = LogsObjects()

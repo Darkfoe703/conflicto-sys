@@ -44,6 +44,7 @@ html {
 
 hr {
     padding: 1rem;
+    margin: 1rem 0;
 }
 
 .main-header {
@@ -56,6 +57,7 @@ hr {
     width: 100%;
     z-index: 999;
     padding: 1rem 1rem;
+    background-color: #10181e;
 }
 
 .container {

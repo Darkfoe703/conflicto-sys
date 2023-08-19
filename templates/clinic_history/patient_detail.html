@@ -55,16 +55,30 @@
 
   </header>
   <h2 class="patient-h">Historial Clínico</h2>
-  <div> {{ sessions }} </div>
-  {% for session in sessions %}
-  <div>{{session.patient}}</div>
-  <div>{{session.n_session}}</div>
-  <div>{{session.date_log}}</div>
 
+  {% for session in sessions %}
+  <details>
+    <summary role="button" class="secondary">{{session.date_log}} • Sesión {{session.n_session}}</summary>
+    <div>{{session.session_log | linebreaks}}</div>
+  </details>
   {% endfor %}
   <footer>
     <div>
       <h5>Contactos </h5>
+      <div>
+        {% for contact in contacts %}
+        <div class="grid">
+          <h5> {{contact.name}} {{contact.surname}} </h5>
+          <span> {{contact.relation}} </span>
+          <span> {{contact.address}} </span>
+        </div>
+        <div class="grid">
+          <span> {{contact.phone_number}} </span>
+          <span> {{contact.other_info}} </span>
+        </div>
+        <hr>
+        {% endfor %}
+      </div>
     </div>
   </footer>
 </article>

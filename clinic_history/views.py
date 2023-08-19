@@ -1,8 +1,16 @@
+from typing import Any, Dict
 from django.shortcuts import render
 
 from django.views.generic import TemplateView, ListView
 from django.views.generic.detail import DetailView
-from .models import SocialSecurity, Patient, PatientLogs
+from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
+from .models import (
+    SocialSecurity,
+    Patient,
+    PatientLogs,
+    PatientContact
+    )
+from .forms import OOSS_Form
 
 # Create your views here.
 class OOSSView(TemplateView):
@@ -38,8 +46,41 @@ class PatientDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['patients'] = Patient.objects.filter(id=self.kwargs.get('id'))
-        filtro = Patient.objects.filter(id=self.kwargs.get('id'))
-        context['sessions'] = PatientLogs.patientobjects.all()
+        context['sessions'] = PatientLogs.objects.filter(patient_id=self.kwargs.get('pk'))
+        context['contacts'] = PatientContact.objects.filter(patient_id=self.kwargs.get('pk'))
         print(context)
         return context
     
+
+class OOSSCreateView(CreateView):
+    form_class = OOSS_Form
+    model = SocialSecurity
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({
+            'view_type': 'create'
+        })
+        return context
+
+
+class OOSSUpdateView(UpdateView):
+    form_class = OOSS_Form
+    model = SocialSecurity
+    fields = (
+        'name',
+        'code_type',
+    )
+
+""" class PatientDetailView(DetailView):
+    model = Patient
+    template_name = 'clinic_history/patient_detail.html'
+    context_object_name = 'patient'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['patients'] = Patient.objects.filter(id=self.kwargs.get('id'))
+        filtro = Patient.objects.filter(id=self.kwargs.get('id'))
+        context['sessions'] = PatientLogs.patientobjects.all()
+        print(context)
+        return context """

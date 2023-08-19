@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<article>
+<h3>Cargar Obra Social {{view_type}} </h3>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"> {{view_type}} </button>
+</form>
+</article>
+
+{% endblock content %}
