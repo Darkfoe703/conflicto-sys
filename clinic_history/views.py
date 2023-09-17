@@ -22,7 +22,7 @@ class OOSSView(TemplateView):
         print(context)
         return context
 
-class PatientPageView(TemplateView):
+class PatientListView(TemplateView):
     template_name = 'clinic_history/index.html'
 
     def get_context_data(self, **kwargs):
@@ -59,7 +59,7 @@ class OOSSCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update({
-            'view_type': 'create'
+            'view_type': 'crear'
         })
         return context
 
@@ -72,15 +72,7 @@ class OOSSUpdateView(UpdateView):
         'code_type',
     )
 
-""" class PatientDetailView(DetailView):
-    model = Patient
-    template_name = 'clinic_history/patient_detail.html'
-    context_object_name = 'patient'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['patients'] = Patient.objects.filter(id=self.kwargs.get('id'))
-        filtro = Patient.objects.filter(id=self.kwargs.get('id'))
-        context['sessions'] = PatientLogs.patientobjects.all()
-        print(context)
-        return context """
+"""
+TODO: Vista de lista de OOSS, para mostar un Success redirect
+Form de Pacientes, Contactos y Registro
+"""
