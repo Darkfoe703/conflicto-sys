@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div>
+    <a href="{% url 'clinic_history:createOOSS' %}" role="button">Agregar</a>
+    <a href="{% url 'clinic_history:updateOOSS' %}" role="button">Modificar</a>
+</div>
+<table role="grid">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Nomenclador</th>
+      <th scope="col">Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for os in ooss %}
+    <tr>
+      <th scope="row">{{ os.id }}</th>
+      <td>{{ os.name }}</td>
+      <td>{{ os.code_type }}</td>
+      <td>{{ os.id }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

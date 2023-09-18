@@ -55,6 +55,7 @@ class PatientDetailView(DetailView):
 class OOSSCreateView(CreateView):
     form_class = OOSS_Form
     model = SocialSecurity
+    success_url = '/clinic_history/listOOSS'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -67,12 +68,17 @@ class OOSSCreateView(CreateView):
 class OOSSUpdateView(UpdateView):
     form_class = OOSS_Form
     model = SocialSecurity
+    success_url = '/clinic_history/listOOSS'
+
     fields = (
         'name',
         'code_type',
     )
 
 """
-TODO: Vista de lista de OOSS, para mostar un Success redirect
-Form de Pacientes, Contactos y Registro
+TODO:
+- Vista de Update OOSS
+- Vista de Delete OOSS
+- Integrar update y delete en la tabla de OOSS
+- Form de Pacientes, Contactos y Registro
 """
