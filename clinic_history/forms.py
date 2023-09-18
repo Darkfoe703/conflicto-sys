@@ -8,4 +8,5 @@ class OOSS_Form(forms.ModelForm):
         fields = (
             'name',
             'code_type',
+            'desc',
         )

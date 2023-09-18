@@ -5,7 +5,7 @@ from . import models
 
 @admin.register(models.SocialSecurity)
 class PatientAdmin(admin.ModelAdmin):
-    list_display = ('name', 'id', 'code_type')
+    list_display = ('id', 'name', 'code_type', 'desc')
 
 @admin.register(models.Patient)
 class PatientAdmin(admin.ModelAdmin):

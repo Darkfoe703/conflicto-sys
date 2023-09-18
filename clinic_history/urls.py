@@ -8,6 +8,7 @@ from .views import (
     PatientDetailView,
     OOSSCreateView,
     OOSSUpdateView,
+    OOSSDeleteView,
 )
     
 
@@ -18,5 +19,6 @@ urlpatterns = [
     path('<int:pk>/', PatientDetailView.as_view(), name='patient-detail'),
     path('listOOSS/', OOSSView.as_view(), name='listOOSS'),
     path('createOOSS/', OOSSCreateView.as_view(), name='createOOSS'),
-    path('updateOOSS/', OOSSUpdateView.as_view(), name='updateOOSS')
+    path('updateOOSS/<int:pk>', OOSSUpdateView.as_view(), name='updateOOSS'),
+    path('delete_ooss/<int:pk>', OOSSDeleteView.as_view(), name='deleteOOSS'),
 ]

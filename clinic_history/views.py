@@ -60,7 +60,7 @@ class OOSSCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update({
-            'view_type': 'crear'
+            'view_type': 'agregar'
         })
         return context
 
@@ -70,10 +70,17 @@ class OOSSUpdateView(UpdateView):
     model = SocialSecurity
     success_url = '/clinic_history/listOOSS'
 
-    fields = (
-        'name',
-        'code_type',
-    )
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update({
+            'view_type': 'modificar'
+        })
+        return context
+    
+class OOSSDeleteView(DeleteView):
+    model = SocialSecurity
+    template_name = 'clinic_history/deleteOOSS.html'
+    success_url = '/clinic_history/listOOSS'
 
 """
 TODO:

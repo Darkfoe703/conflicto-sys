@@ -2,9 +2,9 @@
 {% load static %}
 
 {% block content %}
+<br>
 <div>
     <a href="{% url 'clinic_history:createOOSS' %}" role="button">Agregar</a>
-    <a href="{% url 'clinic_history:updateOOSS' %}" role="button">Modificar</a>
 </div>
 <table role="grid">
   <thead>
@@ -21,7 +21,9 @@
       <th scope="row">{{ os.id }}</th>
       <td>{{ os.name }}</td>
       <td>{{ os.code_type }}</td>
-      <td>{{ os.id }}</td>
+      <td>{{ os.desc }}</td>
+      <td><a role="button" class="row-btn" href="{% url "clinic_history:updateOOSS" pk=os.id %}">Modificar</a></td>
+      <td><a role="button" class="row-btn" href="{% url "clinic_history:deleteOOSS" pk=os.id %}">Eliminar</a></td>
     </tr>
     {% endfor %}
   </tbody>

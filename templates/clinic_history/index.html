@@ -3,6 +3,10 @@
 
 {% block content %}
     <br>
+    <div class="">
+        <a role="button" href="{% url "clinic_history:listOOSS" %}">Obras Sociales</a>
+    </div>
+    <br>
     <table role="grid">
         <thead>
             <tr>
@@ -37,15 +41,5 @@
             
             {% endfor %}
         </tbody>
-        <tfoot>
-            <tr>
-                <th scope="col">#</th>
-                <td scope="col">Total</td>
-                <td scope="col">Total</td>
-                <td scope="col">Total</td>
-                <td scope="col">Total</td>
-                <td scope="col">Total</td>
-            </tr>
-        </tfoot>
     </table>
 {% endblock content %}

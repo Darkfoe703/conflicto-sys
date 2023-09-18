@@ -17,8 +17,10 @@ class SocialSecurity(models.Model):
         ('Provincial', 'provincial'),
     )
     
+    id = models.AutoField(primary_key=True, unique=True, editable=False, blank=False, null=False)
     name = models.CharField(max_length=255, editable=True, blank=False, null=False, verbose_name='Obra Social')
     code_type = models.CharField(max_length=100, choices=practice_codes, default='', blank=True, null=True, verbose_name='Tipo de Nomenclador')
+    desc = models.TextField(max_length=255, blank=True, null=True, verbose_name='Descripción')
 
     class Meta:
         ordering = ('-name',)
