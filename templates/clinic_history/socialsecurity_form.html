@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<article>
+<h3>{{view_type | title}} Obra Social</h3>
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"> {{view_type | title}} </button>
+</form>
+</article>
+
+{% endblock content %}
