@@ -51,7 +51,7 @@ class Patient(models.Model):
         ('Separado/a', 'Separado'),
         ('En pareja', 'En pareja'),
     )
-    formation = (
+    edu_opt = (
         ('Incompletos', 'Incompletos'),
         ('Primaria', 'Primaria'),
         ('Secundaria', 'Secundaria'),
@@ -71,7 +71,7 @@ class Patient(models.Model):
     phone_number = models.IntegerField(blank=True, verbose_name='Telefono')
     address = models.CharField(max_length=100, blank=True, verbose_name='Dirección')
     email = models.EmailField(max_length=100, blank=True, verbose_name='E-mail')
-    education = models.CharField(max_length=100, blank=True, verbose_name='Estudios')
+    education = models.CharField(max_length=100, blank=True, choices=edu_opt, default='',  verbose_name='Estudios')
     workplace = models.CharField(max_length=100, blank=True, verbose_name='Ocupación')
     other_act = models.CharField(max_length=255, blank=True, verbose_name='Otras actividades')
     times = models.CharField(max_length=255, blank=True, verbose_name='Tiempos')

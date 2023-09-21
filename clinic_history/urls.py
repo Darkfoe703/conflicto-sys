@@ -9,6 +9,9 @@ from .views import (
     OOSSCreateView,
     OOSSUpdateView,
     OOSSDeleteView,
+    PatientCreateView,
+    PatientUpdateView,
+    PatientDeleteView,
 )
     
 
@@ -21,4 +24,7 @@ urlpatterns = [
     path('createOOSS/', OOSSCreateView.as_view(), name='createOOSS'),
     path('updateOOSS/<int:pk>', OOSSUpdateView.as_view(), name='updateOOSS'),
     path('delete_ooss/<int:pk>', OOSSDeleteView.as_view(), name='deleteOOSS'),
+    path('createPatient/', PatientCreateView.as_view(), name='createPatient'),
+    path('updatePatient/<int:pk>', PatientUpdateView.as_view(), name='updatePatient'),
+    path('deletePatient/<int:pk>', PatientDeleteView.as_view(), name='deletePatient'),
 ]

@@ -5,6 +5,7 @@
     <br>
     <div class="">
         <a role="button" href="{% url "clinic_history:listOOSS" %}">Obras Sociales</a>
+        <a role="button" href="{% url "clinic_history:createPatient" %}">Nuevo Paciente</a>
     </div>
     <br>
     <table role="grid">
@@ -35,7 +36,9 @@
                 <td> {{ patient.treatment_status | title }} </td>
                 <td> {{ patient.ooss | upper }} </td>
                 <td> {{ patient.civil_status}} </td>
-                <td><a role="button" class= "row-btn" href="{% url 'clinic_history:patient-detail' pk=patient.id %}"> Ver </a></td>
+                <td><a role="button" class="row-btn" href="{% url 'clinic_history:patient-detail' pk=patient.id %}"> Ver </a></td>
+                <td><a role="button" class="row-btn" href="{% url "clinic_history:updatePatient" pk=patient.id %}">Modificar</a></td>
+                <td><a role="button" class="row-btn" href="{% url "clinic_history:deletePatient" pk=patient.id %}">Eliminar</a></td>
                 
             </tr>
             

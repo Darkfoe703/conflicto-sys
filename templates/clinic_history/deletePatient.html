@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Confirmar Eliminación de {{ object }}</h2>
+    <p>¿Estás seguro de que deseas eliminar este Paciente?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Eliminar</button>
+    </form>
+    <a href="{% url 'clinic_history:home' %}">Cancelar y Volver a la lista de Obras Sociales</a>
+{% endblock %}
